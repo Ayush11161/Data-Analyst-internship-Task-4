@@ -27,13 +27,13 @@ JOIN invoices i ON c.CustomerId = i.CustomerId
 GROUP BY c.CustomerId
 ORDER BY total_spent DESC;
 ```
-###2. Customers and Their Invoices (JOIN Example)
+### 2. Customers and Their Invoices (JOIN Example)
 ```sql
 SELECT c.FirstName, c.LastName, i.InvoiceId, i.Total
 FROM Customer c
 INNER JOIN invoices i ON c.CustomerId = i.CustomerId;
 ```
-###3. Customers Who Spent More Than $50 (Subquery)
+### 3. Customers Who Spent More Than $50 (Subquery)
 ```sql
 SELECT CustomerId, total_spent
 FROM (
@@ -43,12 +43,12 @@ FROM (
 ) t
 WHERE total_spent > 50;
 ```
-###4. Average Invoice Value
+### 4. Average Invoice Value
 ```sql
 SELECT AVG(Total) AS avg_invoice
 FROM Invoice;
 ```
-###5. High Value Customers (View)
+### 5. High Value Customers (View)
 ```sql 
 CREATE VIEW high_value_customers AS
 SELECT CustomerId, SUM(Total) AS total_spent
@@ -56,6 +56,6 @@ FROM Invoice
 GROUP BY CustomerId
 HAVING total_spent > 100;
 ```
-###6. Optimization with Index
+### 6. Optimization with Index
 ```sql 
 CREATE INDEX idx_customer ON Invoice(CustomerId);
